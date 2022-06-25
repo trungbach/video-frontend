@@ -1,0 +1,20 @@
+{
+    "str_common_home": "Trang chủ",
+    "str_common_count": "Bộ đếm",
+    "str_common_province": "Thành phố",
+    "str_common_login": "Đăng nhập",
+    "str_common_logout": "Đăng xuất",
+    "str_common_confirm_title": "Thông báo",
+    "str_common_confirm_content": "Bạn có chắc chắn muốn đăng xuất",
+    "str_common_confirm_ok": "Đồng ý",
+    "str_common_confirm_cancel": "Huỷ bỏ",
+    "str_common_input_email": "Vui lòng nhập email!",
+    "str_common_input_password": "Vui lòng nhập mật khẩu!",
+    "str_common_email": "Email",
+    "str_common_password": "Mật khẩu",
+    "str_common_submit": "Gửi",
+    "str_common_back": "Trở về",
+    "str_common_input_username": "Vui lòng nhập tên đăng nhập!",
+    "str_common_input_phone": "Vui lòng nhập số điện thoại!",
+    "str_common_search": "Tìm kiếm"
+}

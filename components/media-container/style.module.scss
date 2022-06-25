@@ -1,0 +1,27 @@
+@import "@/styles/base.scss";
+
+.homeContainer {
+  background-color: var(--bg-primary);
+  flex-grow: 1;
+  height: 100%;
+  color: var(--text-white);
+  padding: 40px 0 20px 20px;
+  overflow: hidden;
+}
+
+.hoverBorder {
+  &:hover {
+    &>div {
+      cursor: pointer;
+      border-color: #ccc !important;
+    }
+  }
+}
+
+.button {
+  padding: 6px 20px;
+  border-radius: 13px;
+  background-color: #cccc;
+  width: fit-content;
+  font-size: 15px;
+}

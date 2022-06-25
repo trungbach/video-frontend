@@ -1,0 +1,21 @@
+{
+    "str_common_home": "Home",
+    "str_common_count": "Count",
+    "str_common_province": "Province",
+    "str_common_login": "Login",
+    "str_common_logout": "Logout",
+    "str_common_confirm_title": "Confirm",
+    "str_common_confirm_content": "Are you sure logout",
+    "str_common_confirm_ok": "Ok",
+    "str_common_confirm_cancel": "Cancel",
+    "str_common_input_email": "Please input your email!",
+    "str_common_input_password": "Please input your password!",
+    "str_common_email": "Email",
+    "str_common_password": "Password",
+    "str_common_submit": "Submit",
+    "str_common_back": "Back",
+    "str_common_input_username": "Please input your username!",
+    "str_common_input_phone": "Please input your phone!",
+    "str_common_search": "Search"
+
+}

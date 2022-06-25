@@ -1,0 +1,27 @@
+.videoEvent {
+    min-height: 100vh;
+    border: 1px solid #5d4848;
+    border-right: none;
+    padding: 20px;
+    margin-left: 30px;
+
+    &>h3 {
+        color: #ccc;
+    }
+
+    ul {
+        li {
+            padding: 10px;
+            background: #2e2a2a;
+            border-radius: 10px;
+            margin-top: 2rem;
+            color: #ccc;
+
+            h4 {
+                font-size: 16px;
+                color: #ccc;
+                margin-bottom: 6px;
+            }
+        }
+    }
+}

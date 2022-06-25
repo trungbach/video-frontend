@@ -1,0 +1,47 @@
+@import "@/styles/base.scss";
+
+.homeContainer {
+  background-color: var(--bg-primary);
+  flex-grow: 1;
+  height: 100%;
+  color: var(--text-white);
+  overflow: hidden;
+  padding: 20px 0 20px 20px;
+}
+
+.hoverBorder {
+  &:hover {
+    &>div {
+      cursor: pointer;
+      border-color: #ccc !important;
+    }
+  }
+}
+
+.button {
+  padding: 6px 20px;
+  border-radius: 13px;
+  background-color: var(--bg-sider);
+  width: fit-content;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.form {
+  :global {
+    .ant-form {
+      label {
+        color: #ccc !important;
+
+      }
+
+      input,
+      select {
+        border-radius: 10px;
+      }
+    }
+  }
+}

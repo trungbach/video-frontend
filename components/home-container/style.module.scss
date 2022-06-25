@@ -1,0 +1,37 @@
+@import "@/styles/base.scss";
+
+.homeContainer {
+  background-color: var(--bg-primary);
+  flex-grow: 1;
+  height: 100%;
+  color: var(--text-white);
+  padding: 20px;
+  padding-top: 80px;
+}
+
+.hoverBorder {
+  &:hover {
+    &>div {
+      cursor: pointer;
+      border-color: #ccc !important;
+    }
+  }
+}
+
+.addContent {
+  padding: 6px 20px;
+  border-radius: 10px;
+  background-color: #cccc;
+  width: fit-content;
+  height: fit-content;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+
+  &:hover {
+    background-color: #cccc;
+    color: rgb(92, 74, 74);
+  }
+}

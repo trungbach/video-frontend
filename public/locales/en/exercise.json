@@ -1,0 +1,20 @@
+{
+    "str_your_exercise":"Your Exercises",
+    "str_exercise_reading":"Reading",
+    "str_exercise_listening":"Listening",
+    "str_exercise_writing":"Writing",
+    "str_exercise_library":"Library",
+    "str_exercise_add_reading":"Add",
+    "str_exercise_questions":"questions",
+    "str_exercise_quiz":"Quiz",
+    "str_exercise_answer":"Answer",
+    "str_exercise_member_answer":"Answer",
+    "str_exercise_same_answer":"Same answer",
+    "str_exercise_create_exercise": "Create Exercise",
+    "str_exercise_kind_of_exercise": "Let us know what kind of exercise you want to create",
+    "str_exercise_type_gap_filling": "Choose one answer",
+    "str_exercise_type_true_false": "True false", 
+    "str_exercise_type_multiple_choice": "Mutiple choise",
+    "str_exercise_new_question": "New question",
+    "str_exercise_fill_word": "Fill in the word"
+}

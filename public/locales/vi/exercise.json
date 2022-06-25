@@ -1,0 +1,23 @@
+{
+    "str_your_exercise":"Bài tập của bạn",
+    "str_exercise_reading":"Đọc Hiểu",
+    "str_exercise_listening":"Nghe",
+    "str_exercise_writing":"Viết",
+    "str_exercise_library":"Thư viện",
+    "str_exercise_add_reading":"TẠO",
+    "str_exercise_questions":"câu hỏi",
+    "str_exercise_quiz":"Câu đố",
+    "str_exercise_answer":"Đáp án",
+    "str_exercise_member_answer":"Câu trả lời",
+    "str_exercise_same_answer":"Chọn cùng đáp án",
+    "str_exercise_create_exercise": "Tạo bài tập",
+    "str_exercise_kind_of_exercise": "Cho chúng tôi biết dạng bài tập bạn muốn tạo",
+    "str_exercise_type_gap_filling": "Chọn đáp án đơn",
+    "str_exercise_type_true_false": "Đúng sai", 
+    "str_exercise_type_multiple_choice": "Chọn nhiều đáp án",
+    "str_exercise_new_question": "Câu hỏi mới",
+    "str_exercise_fill_word": "Điền từ",
+    "str_exercise_empty_title":"Bạn chưa tạo bài tập nào",
+    "str_exercise_empty_title_create":"Tạo một bài tập để chia sẻ với học sinh của bạn",
+    "str_exercise_empty_button_create":"Thêm bài tập"
+}

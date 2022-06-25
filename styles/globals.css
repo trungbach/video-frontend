@@ -1,0 +1,379 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  color: #ccc;
+}
+
+:root {
+  --text-secondary: #aeb8b7;
+  --text-white: #fff;
+  --text-dark: #353842;
+  --active-color: #1ecf30;
+  --inactive-color: #f54258;
+  --blue-color: #3f71f1;
+  --label-color: #a8a89c;
+  --bg-sider: #202225;
+  --bg-secondary: #292b2f;
+  --bg-primary: #2f3136;
+  --bg-light: #fcfcfc;
+  --bg-input: #224957;
+  --border-radius-10: 10px;
+  --border-color: #e6e6e6;
+  --question-color: #aeb8b7;
+  --answer-color: #5b5b5b;
+  --border-tab-color: #e5e5e5;
+  --bg-exercise-entities: #4a4849;
+  --bg-add-exercise: #f4aa39;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: #ccc;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-Black.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-BlackItalic.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-Bold.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-ExtraLight.ttf")
+    format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-ExtraLightItalic.ttf")
+    format("truetype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-ExtraBoldItalic.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-Italic.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-ExtraBold.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-BoldItalic.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-SemiBoldItalic.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-Light.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-LightItalic.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mulish";
+  src: url("../public/assets/fonts/Mulish/static/Mulish-MediumItalic.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url("../public/assets/fonts/Poppins/Poppins-Light.ttf");
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+.gap-filling > .ant-tabs-nav {
+  display: none !important;
+}
+
+.gap-filling {
+  height: 100%;
+}
+
+.gap-filling > .ant-tabs-content-holder {
+  height: 100%;
+}
+
+.gap-filling > .ant-tabs-content-holder > .ant-tabs-content {
+  height: 100%;
+}
+
+.ant-tabs-tab-btn {
+  width: 100%;
+}
+
+.ant-tabs-content-left {
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* theme css */
+.ant-menu {
+  background: transparent !important;
+}
+
+.ant-layout-content {
+  position: relative;
+}
+
+.ant-message .ant-message-notice-content > div {
+  display: flex;
+  align-items: center;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner,
+.ant-radio-inner::after {
+  background-color: var(--active-color) !important;
+  border-color: var(--active-color) !important;
+}
+
+.ant-radio-checked::after {
+  border: 1px solid #1ecf30 !important;
+}
+
+.ant-radio-checked .ant-radio-inner {
+  border-color: var(--active-color);
+}
+
+.full-height {
+  height: 100%;
+  min-height: 100vh;
+}
+/* end css */
+
+/* [1] The container */
+.img-hover-zoom {
+  /* height: 300px; [1.1] Set it as per your need */
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.img-hover-zoom img {
+  transition: transform 0.5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.img-hover-zoom:hover img {
+  transform: scale(1.2);
+}
+
+/* Zoom-n-rotate Container */
+.img-hover-zoom--zoom-n-rotate img {
+  height: 300px;
+  transition: transform 1s ease-in-out;
+}
+
+/* The Transformation */
+.img-hover-zoom--zoom-n-rotate:hover img {
+  transform: scale(1.5) rotate(10deg);
+}
+
+/* Colorize-zoom Container */
+.img-hover-zoom--colorize img {
+  transition: transform 0.5s, filter 1.5s ease-in-out;
+  filter: grayscale(100%);
+}
+
+/* The Transformation */
+.img-hover-zoom--colorize:hover img {
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+
+/* cursor pointer */
+.type-button {
+  cursor: pointer;
+}
+
+/* error input */
+.error-input {
+  color: #ff4d4f;
+  margin: 8px;
+}
+
+.optionMinutes > .ant-select-arrow {
+  color: var(--text-white) !important;
+}
+
+.buttonData
+  > .ant-form-item-control
+  > .ant-form-item-control-input
+  > .ant-form-item-control-input-content {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.roleChoose {
+  height: 100%;
+}
+
+.roleChoose > .ant-form-item-control {
+  height: 100%;
+}
+
+.roleChoose > .ant-form-item-control > .ant-form-item-control-input {
+  height: 100%;
+}
+
+.roleChoose
+  > .ant-form-item-control
+  > .ant-form-item-control-input
+  > .ant-form-item-control-input-content {
+  height: 100%;
+}
+
+.textTitle > .ant-modal-content > .ant-modal-header > .ant-modal-title {
+  text-align: center;
+  font-size: 24px;
+}
+
+.tabExericse > .ant-tabs-nav {
+  background-color: transparent !important;
+  width: 100%;
+}
+
+.tabExericse
+  > .ant-tabs-nav
+  > .ant-tabs-nav-wrap
+  > .ant-tabs-nav-list
+  > .ant-tabs-tab {
+  width: 150px;
+}
+
+/* ant-item-error */
+.ant-form-item-explain {
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+
+.ant-radio-wrapper span {
+    color: #ccc !important;
+}

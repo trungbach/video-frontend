@@ -1,0 +1,126 @@
+.bodyOverview {
+  color: var(--text-white);
+  height: 100vh;
+  .overviewRoom {
+    height: 11.2vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    .buttonSignLogin {
+      display: flex;
+      height: 32px;
+      .textSign {
+        width: 74px;
+        background: #1ecf30;
+        border-radius: 4px;
+        padding: 4px 10px;
+        cursor: pointer;
+        span {
+          color: var(--text-white);
+        }
+      }
+      .textLogin {
+        cursor: pointer;
+        width: 86px;
+        padding: 4px 0px;
+        text-align: end;
+        span {
+          color: var(--text-white);
+        }
+      }
+    }
+  }
+  .welcomeImage {
+    height: 63.8vh;
+    margin: 0px !important;
+    background-image: url(../../public/assets/image/bg_welcome.png);
+    background-size: 100% 100%;
+    .welcomeTitle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .textWelcome {
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 52px;
+        text-transform: uppercase;
+        color: #ffffff;
+      }
+      .textRoom {
+        font-weight: 800;
+        font-size: 40px;
+        line-height: 52px;
+        text-transform: uppercase;
+        color: #8efcba;
+      }
+      .buttonCreate {
+        cursor: pointer;
+        width: 255px;
+        height: 56px;
+        margin-top: 42px;
+        background-color: var(--text-white);
+        filter: drop-shadow(4px 4px 28px rgba(0, 0, 0, 0.15));
+        border-radius: 50px;
+        padding: 14px 55px;
+        span {
+          color: #1ecf30;
+          font-weight: bold;
+          font-size: 18px;
+          line-height: 25px;
+        }
+      }
+    }
+    .sizeImage {
+      padding: 0px !important;
+      .sizeImageTask {
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+      }
+    }
+  }
+  .lastFooter {
+    height: 25vh;
+    padding: 37px 0px;
+    .learnEng {
+      display: flex;
+      justify-content: center;
+      width: 80%;
+      margin: 0 auto;
+      div {
+        font-size: 60px;
+        white-space: nowrap;
+        @media (max-width: 1440px) {
+          font-size: 34px;
+        }
+      }
+      p {
+        margin-left: 10px;
+        background-color: var(--blue-color);
+        font-size: 60px;
+        font-weight: bold;
+        text-align: center;
+        white-space: nowrap;
+        @media (max-width: 1440px) {
+          font-size: 34px;
+        }
+      }
+    }
+  }
+  .textFooter {
+    display: flex;
+    justify-content: center;
+    div {
+      width: 885px;
+      text-align: center;
+      span {
+        font-weight: normal;
+        font-size: 28px;
+        line-height: 173.5%;
+      }
+    }
+  }
+}

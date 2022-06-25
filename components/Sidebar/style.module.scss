@@ -1,0 +1,63 @@
+@import "@/styles/base.scss";
+.sider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  & + main {
+    margin-left: 138px;
+  }
+  :global {
+    .ant-layout-sider-children {
+      background-color: var(--bg-sider);
+      margin-top: 0;
+      padding-top: 0;
+      .ant-menu-item-selected {
+        background-color: transparent !important;
+        border-right: 4px solid var(--active-color);
+        img {
+          filter: invert(49%) sepia(100%) saturate(425%) hue-rotate(76deg)
+            brightness(105%) contrast(95%);
+        }
+        a {
+          color: var(--active-color);
+        }
+      }
+    }
+  }
+  .siderMenu {
+    height: 100%;
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem;
+      margin-bottom: 7rem;
+    }
+    li {
+      border-right: 4px solid transparent;
+      height: auto;
+      margin-top: 3.5rem;
+      a {
+        font-size: 1.6rem;
+        line-height: 22.08px;
+        font-weight: 400;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        div {
+          margin-top: 1.2rem;
+        }
+      }
+      &:hover {
+        img {
+          filter: invert(49%) sepia(100%) saturate(425%) hue-rotate(76deg)
+            brightness(105%) contrast(95%);
+        }
+        a {
+          color: var(--active-color);
+        }
+      }
+    }
+  }
+}

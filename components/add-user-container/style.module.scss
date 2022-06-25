@@ -1,0 +1,25 @@
+@import "@/styles/base.scss";
+
+.content {
+    overflow-y: auto;
+    background-color: var(--bg-primary);
+    flex-grow: 1;
+    height: 100%;
+    color: var(--text-white);
+    padding: 20px;
+    padding-top: 80px;
+
+    .form {
+        width: 70%;
+        margin-bottom: 50px;
+
+        label {
+            color: #ccc;
+
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+.login {
+  .user {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 8px;
+      font-weight: 700;
+    }
+
+    .logout {
+      color: var(--active-color);
+      font-size: 1.4rem;
+      margin-left: 8px;
+    }
+  }
+}
+
+.disabledLogin {
+  pointer-events: none;
+  cursor: not-allowed;
+}
