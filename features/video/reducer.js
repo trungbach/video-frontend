@@ -6,6 +6,7 @@ import {
   getDetailVideo,
   updateVideo,
   feedbackVideo,
+  updateFeedbackVideo,
 } from "./actions";
 import { message } from "antd";
 import { handleError } from "@/config/apiConfig";
@@ -85,6 +86,8 @@ export const videoReducer = createReducer(initialState, (builder) => {
       console.log("update");
     })
     .addCase(updateVideo.fulfilled, (state, { payload }) => {
+      console.log("oayload", payload);
+      state.detailVideo = payload.data;
       message.success("Update success!");
     })
     .addCase(updateVideo.rejected, (state, action) => {})
@@ -93,8 +96,33 @@ export const videoReducer = createReducer(initialState, (builder) => {
       console.log("update");
     })
     .addCase(feedbackVideo.fulfilled, (state, { payload }) => {
-      state.detailVideo.feedbacks.push(payload.data);
+      const index = state.detailVideo.feedbacks.findIndex(
+        (item) => item.ownerId === payload.ownerId
+      );
+      if (index > -1) {
+        state.detailVideo.feedbacks[index] = payload;
+      } else {
+        state.detailVideo.feedbacks.push(payload.data);
+      }
+
       message.success("Feedback success!");
     })
-    .addCase(feedbackVideo.rejected, (state, action) => {});
+    .addCase(feedbackVideo.rejected, (state, action) => {})
+
+    .addCase(updateFeedbackVideo.pending, (state) => {
+      console.log("update");
+    })
+    .addCase(updateFeedbackVideo.fulfilled, (state, { payload }) => {
+      const index = state.detailVideo.feedbacks.findIndex(
+        (item) => item.ownerId === payload.data.ownerId
+      );
+      if (index > -1) {
+        payload.data.user;
+        state.detailVideo.feedbacks[index].comment = payload.data.comment;
+        state.detailVideo.feedbacks[index].rate = payload.data.rate;
+      }
+
+      message.success("Update feedback success!");
+    })
+    .addCase(updateFeedbackVideo.rejected, (state, action) => {});
 });

@@ -2,9 +2,23 @@ import { updateVideo } from "@/features/video";
 import { useAppDispatch } from "@/hooks/index";
 import { Button, Form, Input, Select } from "antd";
 import "antd/dist/antd.css";
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import DynamicField from "./DynamicField";
 import styles from "./style.module.scss";
+import { useForm } from "antd/lib/form/Form";
+
+const categoryType = {
+  computer_science: 0,
+  general_education: 1,
+  painting: 2,
+  economics: 3,
+  language: 4,
+  literacy: 5,
+  math: 6,
+  algebra: 7,
+  calculus: 8,
+  geometry: 9,
+};
 
 const { Option } = Select;
 const defaultFormItemLayout = {
@@ -17,7 +31,8 @@ const defaultFormItemLayout = {
 };
 
 export default function FormQuestion({ detailVideo, videoId }) {
-  const [form] = Form.useForm();
+  const [form] = useForm();
+  const videoRef = useRef(null);
 
   const dispatch = useAppDispatch();
 
@@ -26,7 +41,21 @@ export default function FormQuestion({ detailVideo, videoId }) {
       ...values,
       id: Number(videoId),
     };
+    payload.videoQuestions.forEach((q, index) => {
+      console.log("q", q);
+      if (q.duration === undefined) {
+        console.log("detailVideo.videoQuestions[index]", detailVideo.videoQuestions[index]);
+        q.duration = detailVideo.videoQuestions[index]
+          ? detailVideo.videoQuestions[index].duration
+          : Math.floor(videoRef.current.currentTime);
+      }
+      // if (!q.answer) {
+      //   q.answer = "";
+      // }
+    });
+
     console.log("payload", payload);
+    console.log("videoRef", videoRef.current.currentTime);
 
     dispatch(updateVideo(payload));
   }
@@ -73,16 +102,31 @@ export default function FormQuestion({ detailVideo, videoId }) {
           rules={[{ required: true }]}
         >
           <Select>
-            <Option value={1}>Study</Option>
-            <Option value={2}>Football</Option>
+            {Object.keys(categoryType).map((item, index) => {
+              return (
+                <Option key={index} value={categoryType[item]}>
+                  {item}
+                </Option>
+              );
+            })}
           </Select>
         </Form.Item>
-        <DynamicField />
-        <Form.Item>
-          <Button className={styles.button} type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
+        <DynamicField videoRef={videoRef} form={form} />
+        <div
+          className={`d-flex justify-content-right ${styles.submit}`}
+          style={{ marginRight: 100 }}
+        >
+          <Form.Item>
+            <Button
+              style={{ display: "flex", justifyContent: "right" }}
+              className={styles.submitButton}
+              type="primary"
+              htmlType="submit"
+            >
+              Submit
+            </Button>
+          </Form.Item>
+        </div>
       </Form>
     </div>
   );

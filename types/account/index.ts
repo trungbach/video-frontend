@@ -33,6 +33,9 @@ export type AccountState<T> = {
   users?: User[];
   totalRecord?: number;
   detailUser?: User;
+  deleteSuccess: boolean;
+  createUserSuccess: boolean;
+  toggleFollow: boolean;
 };
 
 export interface UserResponse {

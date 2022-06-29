@@ -17,6 +17,19 @@ const defaultFormItemLayout = {
   },
 };
 
+const categoryType = {
+  computer_science: 0,
+  general_education: 1,
+  painting: 2,
+  economics: 3,
+  language: 4,
+  literacy: 5,
+  math: 6,
+  algebra: 7,
+  calculus: 8,
+  geometry: 9,
+};
+
 export default function FormQuestion({ videoResponse }) {
   const [form] = Form.useForm();
 
@@ -37,7 +50,6 @@ export default function FormQuestion({ videoResponse }) {
   }
   return (
     <div className={styles.form}>
-      <h1 className="my-3 mt-5">Add Question</h1>
       <Form form={form} {...defaultFormItemLayout} onFinish={handleSubmit}>
         <Form.Item name="content" label="Content Name" rules={[{ required: true }]}>
           <Input
@@ -59,11 +71,16 @@ export default function FormQuestion({ videoResponse }) {
         </Form.Item>
         <Form.Item initialValue={1} name="category" label="Category" rules={[{ required: true }]}>
           <Select>
-            <Option value={1}>Study</Option>
-            <Option value={2}>Football</Option>
+            {Object.keys(categoryType).map((item, index) => {
+              return (
+                <Option key={index} value={categoryType[item]}>
+                  {item}
+                </Option>
+              );
+            })}
           </Select>
         </Form.Item>
-        <DynamicField />
+        {/* <DynamicField /> */}
         <Form.Item>
           <Button className={styles.button} type="primary" htmlType="submit">
             Submit

@@ -1,11 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import { useAppDispatch } from "@/hooks/index";
+import { accountSelector, createUser } from "@/features/account";
+import { useAppDispatch, useAppSelector } from "@/hooks/index";
 import { useUploadImage } from "@/hooks/useUploadImage";
 import { Button, DatePicker, Form, Input, Radio } from "antd";
 import React, { useEffect, useState } from "react";
 import styles from "./style.module.scss";
+import Link from "next/link";
+import { ROLE_STAFF, ROLE_USER } from "@/config/constant";
+import { useRouter } from "next/router";
+
 function AddUserContainer() {
   const dispatch = useAppDispatch();
+  const { createUserSuccess } = useAppSelector(accountSelector);
   const [form] = Form.useForm();
 
   const formItemLayout = {
@@ -21,6 +27,7 @@ function AddUserContainer() {
 
   const [file, setFile] = useState();
   const [avatar] = useUploadImage(file);
+  const router = useRouter();
 
   useEffect(() => {
     avatar && form.setFieldsValue({ avatarId: avatar.id });
@@ -32,17 +39,21 @@ function AddUserContainer() {
   };
 
   const handleSubmit = (values) => {
-    values.birthday = values["birthday"] ? values["birthday"].format("YYYY-MM-DD") : "";
+    // values.birthday = values["birthday"] ? values["birthday"].format("YYYY-MM-DD") : "";
 
     values.name = values["name"].trim();
     values.phone = values["phone"].trim();
     values.address = values["address"] ? values["address"].trim() : "";
     values.email = values["email"].trim();
-    // dispatch();
+    dispatch(createUser(values));
+    router.push("/manage-user");
   };
 
   return (
     <div className={styles.content}>
+      <Link href="/manage-user">
+        <a className={styles.primaryBtn}>Back</a>
+      </Link>
       <div className={styles.form}>
         <Form form={form} {...formItemLayout} onFinish={handleSubmit} scrollToFirstError>
           <Form.Item
@@ -76,14 +87,21 @@ function AddUserContainer() {
             <Input className={styles.textInputLight} />
           </Form.Item>
 
-          <Form.Item label="Birthday" name="birthday">
+          {/* <Form.Item label="Birthday" name="birthday">
             <DatePicker className={styles.datePicker} disabledDate={disabledFuture} />
-          </Form.Item>
+          </Form.Item> */}
 
           <Form.Item label="Gender" rules={[{ required: true }]} name="gender" initialValue={0}>
             <Radio.Group defaultValue={0}>
               <Radio value={0}>Male</Radio>
               <Radio value={1}>Female</Radio>
+            </Radio.Group>
+          </Form.Item>
+
+          <Form.Item label="Role" rules={[{ required: true }]} name="role" initialValue={ROLE_USER}>
+            <Radio.Group defaultValue={0}>
+              <Radio value={ROLE_USER}>User</Radio>
+              <Radio value={ROLE_STAFF}>Developer</Radio>
             </Radio.Group>
           </Form.Item>
 

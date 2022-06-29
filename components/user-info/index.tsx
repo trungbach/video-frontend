@@ -5,7 +5,6 @@ import { Modal } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { memo, useEffect, useState } from "react";
-import { TranslateProps } from "types/theme";
 import {
   accountSelector, getUser, logout
 } from "../../features/account";
@@ -49,26 +48,24 @@ function UserInfo() {
     setIsModalVisible(false);
   };
 
+  const goToProfile = () => {
+    user && router.push(`/detail-user/${user.id}`);
+  };
+
   return (
     <>
       <div
-        className={
-          router.pathname === "/room/[id]"
-            ? `${styles.login} ${styles.disabledLogin}`
-            : styles.login
-        }
-        onClick={showModal}
+        className={styles.login}
+
       >
-        {user ? (
+        {user && (
           <div className={styles.user}>
-            <Image src={img_avatar} alt="avatar" />
+            <Image onClick={goToProfile} src={img_avatar} alt="avatar" />
             <div>
-              <span>{user?.name}</span>
-              <div className={styles.logout}>Logout</div>
+              <span onClick={goToProfile}>{user?.name}</span>
+              <div onClick={showModal} className={styles.logout}>Logout</div>
             </div>
           </div>
-        ) : (
-          "Login"
         )}
       </div>
     </>

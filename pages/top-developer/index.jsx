@@ -1,7 +1,6 @@
-import EditContentContainer from "@/components/edit-content-container";
 import Theme from "@/components/theme";
+import TopUserContainer from "@/components/top-user-container";
 import { getTokenFromServer } from "@/utils/index";
-import { useRouter } from "next/router";
 import React from "react";
 
 export const getServerSideProps = async ({ locale, req, res }) => {
@@ -19,14 +18,12 @@ export const getServerSideProps = async ({ locale, req, res }) => {
   };
 };
 
-const EditContent = () => {
-  const router = useRouter();
-
+const TopDeveloper = () => {
   return (
-    <Theme title="Edit Content" description="">
-      <EditContentContainer id={router.query.id} />
+    <Theme title="Top Developer" description="">
+      <TopUserContainer />
     </Theme>
   );
 };
 
-export default EditContent;
+export default TopDeveloper;

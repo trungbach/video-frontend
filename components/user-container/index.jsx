@@ -14,13 +14,14 @@ const { Option } = Select;
 
 export default function UserContainer() {
   const dispatch = useAppDispatch();
-  const { users, pending } = useAppSelector(accountSelector);
+  const { users, pending, deleteSuccess } = useAppSelector(accountSelector);
   const [pageIndex, setPageIndex] = React.useState(1);
   const [name, setName] = React.useState("");
+  const [type, setType] = React.useState("");
 
   useEffect(() => {
-    dispatch(getUsers({ page: pageIndex - 1, name }));
-  }, [dispatch, pageIndex, name]);
+    dispatch(getUsers({ page: pageIndex - 1, name, type }));
+  }, [dispatch, pageIndex, name, type, deleteSuccess]);
 
   // if (pending) {
   //   return <LoadingComponent />;
@@ -52,12 +53,13 @@ export default function UserContainer() {
       <div className="mt-5">
         <div className="d-flex justify-content-between align-items-center">
           <h1 className="mt-5 mb-4 ">Manage Users</h1>
-          {/* <div className="d-flex align-items-center me-5">
-            <span style={{ marginRight: 10, fontSize: 15 }}>Sort by: </span>
+          <div className="d-flex align-items-center me-5">
+            <span style={{ marginRight: 10, fontSize: 15 }}>Sort by Followers: </span>
             <Select value={type} onChange={(value) => setType(value)}>
-              <Option value={"rate"}>Rate</Option>
+              <Option value={""}>Low to High</Option>
+              <Option value={"follow"}>High To Low</Option>
             </Select>
-          </div> */}
+          </div>
           <Link href="/add-user">
             <a className={styles.addUser}>Add User</a>
           </Link>

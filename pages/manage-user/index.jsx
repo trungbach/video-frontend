@@ -20,7 +20,7 @@ export const getServerSideProps = async ({ locale, req, res }) => {
 
 const ManageVideo = () => {
   return (
-    <Theme title="Media" description="">
+    <Theme title="Manage User" description="">
       <UserContainer />
     </Theme>
   );

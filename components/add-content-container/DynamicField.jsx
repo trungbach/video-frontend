@@ -44,13 +44,6 @@ function DynamicField(props) {
                   <Form.Item name={[index, "answer"]} label="Answer">
                     <Input placeholder="Answer" />
                   </Form.Item>
-                  <Form.Item
-                    name={[index, "duration"]}
-                    label="Duration"
-                    rules={[{ required: true }]}
-                  >
-                    <Input type="number" />
-                  </Form.Item>
 
                   {fields.length > 1 ? (
                     <Button

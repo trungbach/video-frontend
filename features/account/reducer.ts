@@ -3,6 +3,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import { message } from "antd";
 import { DAY_EXPIRED_TOKEN, KEY_TOKEN, KEY_USER_DATA } from "config/constant";
 import cookies from "js-cookie";
+import { Router } from "next/router";
 import { BaseResponse } from "types/app";
 import { AccountState, User } from "./../../types/account/index";
 import {
@@ -14,11 +15,17 @@ import {
   logout,
   register,
   unfollowUser,
+  createUser,
+  updateUser,
+  deleteUser,
 } from "./actions";
 
 const initialState: AccountState<BaseResponse<User>> = {
   pending: false,
   error: false,
+  deleteSuccess: false,
+  createUserSuccess: false,
+  toggleFollow: false,
 };
 
 export const accountReducer = createReducer(initialState, (builder) => {
@@ -56,6 +63,44 @@ export const accountReducer = createReducer(initialState, (builder) => {
       state.registerResponse = undefined;
       handleError(action.payload);
     })
+
+    .addCase(createUser.pending, (state) => {
+      state.pending = true;
+    })
+    .addCase(createUser.fulfilled, (state, { payload }) => {
+      state.pending = false;
+      state.createUserSuccess = !state.createUserSuccess;
+      message.success("Create User Success!");
+    })
+    .addCase(createUser.rejected, (state, action) => {
+      state.pending = false;
+      state.error = true;
+      handleError(action.payload);
+    })
+
+    .addCase(updateUser.pending, (state) => {})
+    .addCase(updateUser.fulfilled, (state, { payload }) => {
+      message.success("Update User Success!");
+      if (payload.id === state?.user?.id) {
+        state.user = payload;
+        localStorage.setItem(KEY_USER_DATA, JSON.stringify(payload));
+      }
+    })
+    .addCase(updateUser.rejected, (state, action) => {
+      state.error = true;
+      handleError(action.payload);
+    })
+
+    .addCase(deleteUser.pending, (state) => {})
+    .addCase(deleteUser.fulfilled, (state, { payload }) => {
+      message.success("Delete User Success!");
+      state.deleteSuccess = !state.deleteSuccess;
+    })
+    .addCase(deleteUser.rejected, (state, action) => {
+      state.error = true;
+      handleError(action.payload);
+    })
+
     .addCase(logout, (state) => {
       cookies.remove(KEY_TOKEN);
       localStorage.removeItem(KEY_USER_DATA);
@@ -96,6 +141,7 @@ export const accountReducer = createReducer(initialState, (builder) => {
     })
     .addCase(followUser.fulfilled, (state, { payload }) => {
       message.success("Follow success");
+      state.toggleFollow = !state.toggleFollow;
     })
     .addCase(followUser.rejected, (state, action) => {
       handleError(action.payload);
@@ -106,6 +152,7 @@ export const accountReducer = createReducer(initialState, (builder) => {
     })
     .addCase(unfollowUser.fulfilled, (state, { payload }) => {
       message.success("Unfollow success");
+      state.toggleFollow = !state.toggleFollow;
     })
     .addCase(unfollowUser.rejected, (state, action) => {
       handleError(action.payload);

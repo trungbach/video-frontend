@@ -16,8 +16,7 @@ export default function MediaContainer() {
   const { newVideo } = useAppSelector(videoSelector);
 
   const [videoFile, setVideoFile] = useState();
-  const [thumbFile, setThumbFile] = useState();
-  const [videoResponse] = useUploadFile(videoFile, thumbFile);
+  const [videoResponse] = useUploadFile(videoFile);
 
   return (
     <div className={styles.homeContainer}>
@@ -30,14 +29,7 @@ export default function MediaContainer() {
         <h1 className="mt-5 mb-4 ">Upload your videos</h1>
 
         <div>
-          <VideoInput
-            videoFile={videoFile}
-            setVideoFile={setVideoFile}
-            thumbFile={thumbFile}
-            setThumbFile={setThumbFile}
-            width={400}
-            height={300}
-          />
+          <VideoInput videoFile={videoFile} setVideoFile={setVideoFile} width={400} height={300} />
         </div>
       </div>
 

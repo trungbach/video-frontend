@@ -22,14 +22,8 @@ export default function TableVideos({ listVideos }) {
   const router = useRouter();
 
   const [pageIndex, setPageIndex] = useState(1);
-  const handleDelete = (videoId) => {
-    confirm({
-      title: "Are you sure want to delete this video?",
-      onOk: () => {
-        dispatch(deleteVideo({ id: videoId }));
-      },
-      onCancel: () => {},
-    });
+  const goToDetail = (id) => {
+    router.push(`/media/${id}`);
   };
 
   const renderVideos = listVideos.map((video, index) => {
@@ -42,26 +36,16 @@ export default function TableVideos({ listVideos }) {
         <td className="col-1">{video.rateAVG}</td>
         <td className="col-1">{video.numberView}</td>
         <td className="col-2">{moment(video.createdAt).format("YYYY-MM-DD")}</td>
-        {user?.role !== ROLE_USER && (
-          <td className="col-2">
-            {user?.role === ROLE_STAFF && (
-              <img
-                onClick={() => router.push(`/edit-media/${video.id}`)}
-                style={{ marginRight: 6, cursor: "pointer" }}
-                width={30}
-                src="/assets/image/ic_edit.png"
-                alt=""
-              />
-            )}
-            <img
-              onClick={() => handleDelete(video.id)}
-              style={{ cursor: "pointer" }}
-              width={30}
-              src="/assets/image/ic_delete.png"
-              alt=""
-            />
-          </td>
-        )}
+        <td className="col-2">
+          <div
+            onClick={() => goToDetail(video.id)}
+            className="d-flex align-items-center justify-content-center"
+            style={{ cursor: "pointer" }}
+          >
+            <span style={{ color: "#8585f1", fontSize: 15, marginRight: 5 }}>View</span>
+            <img width={30} src="/assets/image/ic_view.png" alt="" />
+          </div>
+        </td>
       </tr>
     );
   });

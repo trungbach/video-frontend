@@ -1,9 +1,9 @@
-import EditContentContainer from "@/components/edit-content-container";
+import DetailUserContainer from "@/components/detail-user-container";
 import Theme from "@/components/theme";
-import { getTokenFromServer } from "@/utils/index";
 import { useRouter } from "next/router";
 import React from "react";
 
+import { getTokenFromServer } from "@/utils/index";
 export const getServerSideProps = async ({ locale, req, res }) => {
   const token = getTokenFromServer(req);
   if (!token) {
@@ -19,14 +19,14 @@ export const getServerSideProps = async ({ locale, req, res }) => {
   };
 };
 
-const EditContent = () => {
+const DetailUser = () => {
   const router = useRouter();
 
   return (
-    <Theme title="Edit Content" description="">
-      <EditContentContainer id={router.query.id} />
+    <Theme title="Detail User" description="">
+      <DetailUserContainer id={router.query.id} />
     </Theme>
   );
 };
 
-export default EditContent;
+export default DetailUser;

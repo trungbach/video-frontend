@@ -1,10 +1,12 @@
 import { useAppDispatch, useAppSelector } from "@/hooks/index";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Radio } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { memo, useEffect } from "react";
 import { accountSelector, register } from "../../features/account";
 import styles from "./style.module.scss";
+import { ROLE_STAFF, ROLE_USER } from "@/config/constant";
+
 function RegisterContainer() {
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -68,6 +70,13 @@ function RegisterContainer() {
           ]}
         >
           <Input placeholder="Phone" />
+        </Form.Item>
+
+        <Form.Item label="Role" rules={[{ required: true }]} name="role" initialValue={ROLE_USER}>
+          <Radio.Group defaultValue={0}>
+            <Radio value={ROLE_USER}>User</Radio>
+            <Radio value={ROLE_STAFF}>Developer</Radio>
+          </Radio.Group>
         </Form.Item>
 
         <Form.Item wrapperCol={{ span: 24 }}>

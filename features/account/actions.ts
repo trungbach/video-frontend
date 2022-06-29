@@ -1,3 +1,4 @@
+import { KEY_USER_DATA } from "config/constant";
 import { message } from "antd";
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { BaseResponse, ErrorResponse } from "types/app";
@@ -78,7 +79,6 @@ export const deleteUser = createAsyncThunk<any, GetUserRequest, { rejectValue: E
   async (payload: GetUserRequest, thunkAPI) => {
     try {
       const response = await instance.post("api/admin/v1/user/delete-user", payload);
-      message.success("Delete User Success!");
       return response;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response);
@@ -90,8 +90,20 @@ export const updateUser = createAsyncThunk<any, GetUserRequest, { rejectValue: E
   "account/update",
   async (payload: GetUserRequest, thunkAPI) => {
     try {
-      const response = await instance.post("api/admin/v1/user/delete-user", payload);
-      message.success("Delete User Success!");
+      const response = await instance.post("api/admin/v1/auth/edit-user", payload);
+
+      return payload;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response);
+    }
+  }
+);
+
+export const createUser = createAsyncThunk<any, GetUserRequest, { rejectValue: ErrorResponse }>(
+  "account/create",
+  async (payload: GetUserRequest, thunkAPI) => {
+    try {
+      const response = await instance.post("api/admin/v1/auth/add-user", payload);
       return response;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response);

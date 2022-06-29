@@ -30,6 +30,19 @@
   border: none;
 }
 
+.submitButton {
+  height: auto;
+  padding: 8px 20px;
+  border-radius: 13px;
+  background-color: var(--bg-sider);
+  width: fit-content;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
 .form {
   :global {
     .ant-form {
@@ -42,6 +55,16 @@
       select {
         border-radius: 10px;
       }
+    }
+  }
+}
+
+.submit {
+  margin-top: 20px;
+
+  :global {
+    .ant-form-item {
+      margin-left: auto;
     }
   }
 }

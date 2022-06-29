@@ -1,16 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
-import { accountSelector, getDetailUser } from "@/features/account";
+import { accountSelector, getDetailUser, updateUser } from "@/features/account";
 import { useAppDispatch, useAppSelector } from "@/hooks/index";
 import { useUploadImage } from "@/hooks/useUploadImage";
 import { Button, DatePicker, Form, Input, Radio } from "antd";
 import React, { useEffect, useState } from "react";
 import LoadingComponent from "../LoadingComponent";
+import moment from "moment";
 import styles from "./style.module.scss";
+import { DATE_FORMAT } from "@/config/constant";
+import Link from "next/link";
+import { Router, useRouter } from "next/router";
+
 function EditUserContainer({ id }) {
   const dispatch = useAppDispatch();
   const { detailUser, pending } = useAppSelector(accountSelector);
   const [form] = Form.useForm();
-
+  const router = useRouter();
   console.log("detailUser", detailUser);
 
   useEffect(() => {
@@ -41,21 +46,26 @@ function EditUserContainer({ id }) {
   };
 
   const handleSubmit = (values) => {
-    values.birthday = values["birthday"] ? values["birthday"].format("YYYY-MM-DD") : "";
+    values.id = Number(id);
+    // values.birthday = values["birthday"] ? values["birthday"].format(DATE_FORMAT) : "";
 
     values.name = values["name"].trim();
     values.phone = values["phone"].trim();
     values.address = values["address"] ? values["address"].trim() : "";
     values.email = values["email"].trim();
-    // dispatch();
+    dispatch(updateUser(values));
   };
 
-  if (pending) {
+  if (pending || !detailUser) {
     return <LoadingComponent />;
   }
 
   return (
     <div className={styles.content}>
+      <div className={styles.primaryBtn} onClick={() => router.back()}>
+        {" "}
+        Back
+      </div>
       <div className={styles.form}>
         <Form
           initialValues={detailUser}
@@ -95,9 +105,13 @@ function EditUserContainer({ id }) {
             <Input className={styles.textInputLight} />
           </Form.Item>
 
-          <Form.Item label="Birthday" name="birthday">
-            <DatePicker className={styles.datePicker} disabledDate={disabledFuture} />
-          </Form.Item>
+          {/* <Form.Item label="Birthday" name="birthday">
+            <DatePicker
+              initialValue={detailUser.birthday && moment(detailUser.createdAt)}
+              className={styles.datePicker}
+              disabledDate={disabledFuture}
+            />
+          </Form.Item> */}
 
           <Form.Item label="Gender" rules={[{ required: true }]} name="gender" initialValue={0}>
             <Radio.Group defaultValue={0}>
@@ -120,7 +134,7 @@ function EditUserContainer({ id }) {
           </Form.Item>
 
           <Form.Item label="Avatar" name="avatarId">
-            {avatar && (
+            {(avatar || detailUser.avatar) && (
               <img
                 style={{
                   width: 150,
@@ -129,8 +143,8 @@ function EditUserContainer({ id }) {
                   display: "block",
                 }}
                 width={150}
-                src={avatar.originUrl}
-                alt={avatar.originUrl}
+                src={avatar ? avatar.originUrl : detailUser.avatar.originUrl}
+                alt="avatar"
               />
             )}
             <label htmlFor="avatar" className={styles.labelLogo}>

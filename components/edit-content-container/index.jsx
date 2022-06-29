@@ -24,7 +24,7 @@ export default function EditMediaContainer({ id }) {
   return (
     <div className={styles.homeContainer}>
       <div className="row">
-        <Link href="/home">
+        <Link href="/manage-video">
           <a className={styles.button}>Back</a>
         </Link>
       </div>

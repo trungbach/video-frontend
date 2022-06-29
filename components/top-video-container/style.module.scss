@@ -1,0 +1,82 @@
+@import "@/styles/base.scss";
+
+.homeContainer {
+    background-color: var(--bg-primary);
+    flex-grow: 1;
+    height: 100%;
+    color: var(--text-white);
+    padding: 20px 0 20px 20px;
+    overflow: hidden;
+}
+
+.button {
+    padding: 6px 20px;
+    border-radius: 13px;
+    background-color: #cccc;
+    width: fit-content;
+    font-size: 15px;
+}
+
+.hoverBorder {
+    &:hover {
+        &>div {
+            cursor: pointer;
+            border-color: #ccc !important;
+        }
+    }
+}
+
+.table {
+    margin-top: 20px;
+    overflow-y: auto;
+
+    table {
+        width: 100%;
+
+        td {
+            overflow-wrap: break-word;
+        }
+
+        thead {
+            background: var(--background-input-extra);
+            border-bottom: 1px solid #e1dfdf;
+            box-sizing: border-box;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+
+            tr {
+                display: flex;
+                border-radius: 4px 4px 0 0;
+                padding: 10px 0;
+                color: var(--dark-color);
+                font-weight: 500;
+                line-height: 18px;
+                align-items: center;
+            }
+        }
+
+        tbody {
+            tr {
+                display: flex;
+                font-size: 14px;
+                padding: 10px 0;
+                align-items: center;
+                border-bottom: 1px solid #e1dfdf;
+                background: var(--background-input-extra);
+                margin: 0;
+            }
+        }
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.pagination ul li a {
+    color: #000;
+}

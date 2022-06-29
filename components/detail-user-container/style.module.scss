@@ -1,0 +1,45 @@
+@import "@/styles/base.scss";
+
+.content {
+    overflow-y: auto;
+    background-color: var(--bg-primary);
+    flex-grow: 1;
+    height: 100%;
+    color: var(--text-white);
+    padding: 20px;
+    padding-top: 80px;
+
+    .info {
+        width: 60%;
+        margin-bottom: 50px;
+        margin-top: 50px;
+
+        &>div {
+            border: 1px solid rgb(104, 97, 97);
+            border-bottom: none;
+            align-items: center;
+
+            &>div {
+                padding: 20px;
+
+            }
+
+            &>div:first-child {
+                border-right: 1px solid rgb(104, 97, 97);
+            }
+        }
+
+        &>div:last-child {
+            border-bottom: 1px solid rgb(104, 97, 97);
+        }
+    }
+}
+
+.hoverBorder {
+    &:hover {
+        &>div {
+            cursor: pointer;
+            border-color: #ccc !important;
+        }
+    }
+}

@@ -8,7 +8,7 @@ module.exports = {
     includePaths: [path.join(__dirname, "styles")],
   },
   images: {
-    domains: ["lh3.googleusercontent.com", "139.177.188.72"],
+    domains: ["http://localhost:8080", "lh3.googleusercontent.com", "139.177.188.72"],
   },
   i18n,
   swcMinify: true,

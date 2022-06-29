@@ -7,7 +7,9 @@ export default function VideoEvents({ detailVideo }) {
     return (
       <li key={index}>
         <h4>{formatTime(item.duration)}</h4>
-        <p>{item.type === 0 ? "Multiple Choice" : "Explain"}</p>
+        <p>
+          {item.type === 0 ? "Multiple Choice" : item.type === 1 ? "Explain" : "One Correct Answer"}
+        </p>
       </li>
     );
   });

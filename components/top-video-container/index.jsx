@@ -9,6 +9,8 @@ import { Input, Select } from "antd";
 import { getVideos, videoSelector } from "@/features/video";
 import { accountSelector, getUser } from "@/features/account";
 import { ROLE_ADMIN, ROLE_STAFF } from "@/config/constant";
+import { formatTime } from "@/utils/index";
+import moment from "moment";
 
 const { Option } = Select;
 
@@ -25,7 +27,7 @@ const categoryType = {
   geometry: 9,
 };
 
-export default function VideoContainer() {
+export default function TopVideoContainer() {
   const dispatch = useAppDispatch();
   const { listVideos, deleteSuccess } = useAppSelector(videoSelector);
   const { user } = useAppSelector(accountSelector);
@@ -48,6 +50,52 @@ export default function VideoContainer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoName, deleteSuccess, type, category, user]);
 
+  const renderListVideo = listVideos.map((item, index) => {
+    return (
+      <Link passHref href={`/media/${item.id}`} key={index}>
+        <div className={`col-3 p-4 ${styles.hoverBorder}`}>
+          <div style={{ border: "2px solid transparent" }}>
+            <div style={{ position: "relative" }}>
+              <video style={{ width: "100%" }} src={item.video.originUrl} />
+              <div
+                style={{
+                  position: "absolute",
+                  right: 7,
+                  bottom: 7,
+                  background: "#160d0d",
+                  padding: 4,
+                  borderRadius: 7,
+                }}
+              >
+                {formatTime(item.time)}
+              </div>
+            </div>
+            <div className="p-2">
+              <div className="d-flex justify-content-between">
+                <div>
+                  <h3 style={{ color: "#fff", fontSize: 17 }}>{item.title}</h3>
+                  <p style={{ color: "#ccc", marginTop: 8 }}>{item.author}</p>
+                  <div className="d-flex">
+                    <p style={{ color: "#ccc", fontSize: 13 }} className="me-3">
+                      {item.numberView} views
+                    </p>
+                    <p style={{ color: "#ccc", fontSize: 13 }}>
+                      {moment(item.createdAt).fromNow()}
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <h4>{item.user.name}</h4>
+                  <h5 className="mt-3">Rate Average: {item.rateAVG}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Link>
+    );
+  });
+
   return (
     <div className={styles.homeContainer}>
       <div className="row">
@@ -69,14 +117,13 @@ export default function VideoContainer() {
       </div>
       <div>
         <div className="mt-5 d-flex align-items-center justify-content-between">
-          <h1 className="mt-5 mb-4 ">Manage Videos</h1>
+          <h1 className="mt-5 mb-4 ">Top Videos</h1>
           <div className="d-flex align-items-center me-5">
             <span style={{ marginRight: 10, fontSize: 15 }}>Sort by: </span>
             <Select value={type} onChange={(value) => setType(value)}>
               <Option value={"rate"}>Rate</Option>
               <Option value={"view"}>View</Option>
             </Select>
-            {/* <span style={{ marginRight: 10, fontSize: 15 }}>Category: </span> */}
 
             <div
               style={{
@@ -105,7 +152,8 @@ export default function VideoContainer() {
             </div>
           </div>
         </div>
-        <TableVideos listVideos={listVideos} />
+        <div className="row mt-4">{renderListVideo}</div>
+        {/* <TableVideos listVideos={listVideos} /> */}
       </div>
     </div>
   );

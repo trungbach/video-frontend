@@ -82,6 +82,7 @@ export const updateVideo = createAsyncThunk<
     const response = await instance.post("api/v1/video/update", payload);
     return {
       message: response.data.message,
+      data: response.data.body,
     };
   } catch (error: any) {
     return thunkAPI.rejectWithValue(error.response);
@@ -110,6 +111,22 @@ export const feedbackVideo = createAsyncThunk<
 >("video/feedback", async (payload: FeedbackRequest, thunkAPI) => {
   try {
     const response = await instance.post("/api/v1/feedback/create", payload);
+    return {
+      message: response.data.message,
+      data: response.data.body,
+    };
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.response);
+  }
+});
+
+export const updateFeedbackVideo = createAsyncThunk<
+  BaseResponse<string>,
+  FeedbackRequest,
+  { rejectValue: ErrorResponse }
+>("video/update-feedback", async (payload: FeedbackRequest, thunkAPI) => {
+  try {
+    const response = await instance.post("/api/v1/feedback/update", payload);
     return {
       message: response.data.message,
       data: response.data.body,
