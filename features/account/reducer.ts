@@ -82,8 +82,18 @@ export const accountReducer = createReducer(initialState, (builder) => {
     .addCase(updateUser.fulfilled, (state, { payload }) => {
       message.success("Update User Success!");
       if (payload.id === state?.user?.id) {
-        state.user = payload;
-        localStorage.setItem(KEY_USER_DATA, JSON.stringify(payload));
+        state.user = {
+          ...payload,
+          role: state.user?.role,
+        };
+
+        localStorage.setItem(
+          KEY_USER_DATA,
+          JSON.stringify({
+            ...payload,
+            role: state.user?.role,
+          })
+        );
       }
     })
     .addCase(updateUser.rejected, (state, action) => {
