@@ -10,6 +10,20 @@ function DynamicField({ videoRef, form }) {
   const { detailVideo } = useAppSelector(videoSelector);
   const { user } = useAppSelector(accountSelector);
 
+  const handleInsert = (index) => {
+    const fields = form.getFieldsValue();
+    const { videoQuestions } = fields;
+    console.log("form", videoQuestions);
+    const update = { ...videoQuestions[index] };
+
+    Object.assign(update, { duration: Math.floor(videoRef.current.currentTime) });
+    const listUpdate = videoQuestions.slice();
+    listUpdate[index] = update;
+    console.log("listUpdate", listUpdate);
+    form.setFieldsValue({ videoQuestions: listUpdate });
+    form.submit();
+  };
+
   return (
     <div className="row mt-5">
       <div className="col-5">
@@ -63,7 +77,13 @@ function DynamicField({ videoRef, form }) {
                             Remove Above Question
                           </Button>
                         ) : null}
-                        <Button onClick={() => form.submit()}>Insert</Button>
+                        <Button
+                          onClick={() => {
+                            handleInsert(index);
+                          }}
+                        >
+                          Insert
+                        </Button>
                       </div>
                     </div>
                   );

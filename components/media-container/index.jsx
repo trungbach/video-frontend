@@ -129,6 +129,7 @@ export default function MediaContainer() {
       </div>
     );
   };
+  console.log("isFeeb", isFeedback);
 
   const OneAnswer = ({ data }) => {
     return (

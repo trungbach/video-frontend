@@ -55,13 +55,15 @@ export default function Feedback({ detailVideo, isFeedback }) {
   const renderFeedback =
     detailVideo.feedbacks.length > 0 &&
     detailVideo.feedbacks.map((item, index) => {
+      console.log("item", item);
+      console.log("user", user);
       return (
         <>
           <div className="my-2" key={index}>
             <Rate value={item.rate} readonly />
             <div className="my-3">
               <span className="me-3">
-                {item.ownerId === user?.name ? user?.name : item.user?.name}:
+                {item.ownerId === user?.id ? user?.name : item.user?.name}:
               </span>
               {item.comment}
             </div>

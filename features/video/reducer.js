@@ -90,7 +90,10 @@ export const videoReducer = createReducer(initialState, (builder) => {
       state.detailVideo = payload.data;
       message.success("Update success!");
     })
-    .addCase(updateVideo.rejected, (state, action) => {})
+    .addCase(updateVideo.rejected, (state, action) => {
+      console.log("action", action);
+      message.error(action.payload.data.message);
+    })
 
     .addCase(feedbackVideo.pending, (state) => {
       console.log("update");
@@ -113,11 +116,12 @@ export const videoReducer = createReducer(initialState, (builder) => {
       console.log("update");
     })
     .addCase(updateFeedbackVideo.fulfilled, (state, { payload }) => {
+      console.log("pay", payload.data);
       const index = state.detailVideo.feedbacks.findIndex(
         (item) => item.ownerId === payload.data.ownerId
       );
       if (index > -1) {
-        payload.data.user;
+        state.detailVideo.feedbacks[index].user = payload.data.user;
         state.detailVideo.feedbacks[index].comment = payload.data.comment;
         state.detailVideo.feedbacks[index].rate = payload.data.rate;
       }

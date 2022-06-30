@@ -43,12 +43,12 @@ export default function FormQuestion({ detailVideo, videoId }) {
     };
     payload.videoQuestions.forEach((q, index) => {
       console.log("q", q);
-      if (q.duration === undefined) {
-        console.log("detailVideo.videoQuestions[index]", detailVideo.videoQuestions[index]);
-        q.duration = detailVideo.videoQuestions[index]
-          ? detailVideo.videoQuestions[index].duration
-          : Math.floor(videoRef.current.currentTime);
-      }
+      // if (q.duration === undefined) {
+      //   console.log("detailVideo.videoQuestions[index]", detailVideo.videoQuestions[index]);
+      //   // q.duration = detailVideo.videoQuestions[index]
+      //   //   ? detailVideo.videoQuestions[index].duration
+      //   //   : Math.floor(videoRef.current.currentTime);
+      // }
       // if (!q.answer) {
       //   q.answer = "";
       // }
