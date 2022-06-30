@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { Input, Rate, Button, message, Divider } from "antd";
 import { useAppDispatch, useAppSelector } from "@/hooks/index";
-import { feedbackVideo, updateFeedbackVideo } from "@/features/video";
+import { feedbackVideo, updateFeedbackVideo, videoSelector } from "@/features/video";
 import { accountSelector } from "@/features/account";
 const { TextArea } = Input;
 export default function Feedback({ detailVideo, isFeedback }) {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector(accountSelector);
+  // const { toggleUpdate } = useAppSelector(videoSelector);
   const [rate, setRate] = React.useState(1);
   const [comment, setComment] = React.useState("");
   const [feedbackId, setFeedbackId] = React.useState();
@@ -55,8 +56,8 @@ export default function Feedback({ detailVideo, isFeedback }) {
   const renderFeedback =
     detailVideo.feedbacks.length > 0 &&
     detailVideo.feedbacks.map((item, index) => {
+      console.log("update");
       console.log("item", item);
-      console.log("user", user);
       return (
         <>
           <div className="my-2" key={index}>
@@ -72,7 +73,6 @@ export default function Feedback({ detailVideo, isFeedback }) {
         </>
       );
     });
-
   return (
     <div className="mt-5">
       <h3>Feedbacks: </h3>

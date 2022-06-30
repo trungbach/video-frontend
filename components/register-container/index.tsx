@@ -38,9 +38,7 @@ function RegisterContainer() {
       >
         <Form.Item
           name="email"
-          rules={[
-            { required: true, message: "Please input your email!" },
-          ]}
+          rules={[{ required: true }, { type: "email" }]}
         >
           <Input placeholder="Please input your email!" />
         </Form.Item>
@@ -66,7 +64,13 @@ function RegisterContainer() {
         <Form.Item
           name="phone"
           rules={[
-            { required: true, message: "Please input your phone!" },
+            { required: true },
+            {
+              len: 10,
+            },
+            {
+              pattern: new RegExp(/^\d*[1-9]\d*$/), // only number
+            },
           ]}
         >
           <Input placeholder="Phone" />
